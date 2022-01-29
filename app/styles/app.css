@@ -1,0 +1,58 @@
+@import url(https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,600;1,300);
+
+/**
+ * Base Elements
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+span,
+a,
+button {
+  font-family: 'Work Sans', 'Open Sans', 'Helvetica Neue', 'Segoe UI', Helvetica,
+    Arial, sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  background: #f3f3f3;
+  margin: 20px;
+}
+
+.current {
+  background-color: white;
+  border-radius: 10px;
+  height: 100px;
+  margin-bottom: 20px;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding: 20px;
+}
+
+.daily-forecast-wrapper {
+  border-radius: 10px;
+  background: white;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  padding: 20px;
+}
+
+.daily-forecast {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 1rem;
+}

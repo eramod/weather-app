@@ -1,0 +1,10 @@
+<div class="daily-forecast">
+  {{this.day}}
+  {{this.dateOfMonth}}
+  <div>
+    {{round @dailyForecast.temp.max}}
+    /
+    {{round @dailyForecast.temp.min}}
+  </div>
+  <img src={{this.iconUrl}} width="50px" height="50px" alt="Weather icon" />
+</div>

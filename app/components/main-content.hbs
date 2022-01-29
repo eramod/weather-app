@@ -1,0 +1,6 @@
+<CurrentWeather @date={{this.date}} @currentWeather={{@weatherData.current}} />
+<div class="daily-forecast-wrapper">
+  {{#each this.sevenDayForecast as |dailyForecast|}}
+    <DailyForecast @dailyForecast={{dailyForecast}} />
+  {{/each}}
+</div>

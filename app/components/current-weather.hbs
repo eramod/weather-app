@@ -1,0 +1,18 @@
+<div class="current">
+  {{@date.fullDate}}
+  <div>
+    Currently
+    {{lowercase this.currentWeatherDescription}}
+    and
+    {{this.currentTemp}}
+    °F
+  </div>
+  <div>
+    <img
+      src={{this.currentWeatherIconUrl}}
+      width="50px"
+      height="50px"
+      alt="Weather icon"
+    />
+  </div>
+</div>

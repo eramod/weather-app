@@ -1,5 +1,6 @@
 <button
   class="celsius-button"
+  disabled={{eq this.temperature.format 'celsius'}}
   type="button"
   {{on 'click' (fn this.setTempFormat 'celsius')}}
 >
@@ -7,21 +8,18 @@
 </button>
 <button
   class="fahrenheit-button"
+  disabled={{eq this.temperature.format 'fahrenheit'}}
   type="button"
   {{on 'click' (fn this.setTempFormat 'fahrenheit')}}
 >
   Fahrenheit
 </button>
-<CurrentWeather
-  @date={{this.date}}
-  @currentWeather={{@weatherData.current}}
-  @temperatureFormat={{this.temperatureFormat}}
-/>
+<CurrentWeather @date={{this.date}} @currentWeather={{@weatherData.current}} />
 <div class="daily-forecast-wrapper">
   {{#each this.sevenDayForecast as |dailyForecast|}}
     <DailyForecast
       @dailyForecast={{dailyForecast}}
-      @temperatureFormat={{this.temperatureFormat}}
+      @temperatureFormat={{this.temperature.format}}
     />
   {{/each}}
 </div>

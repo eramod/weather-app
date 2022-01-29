@@ -1,7 +1,9 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import DateService from 'weather/services/date';
-import { TemperatureFormat } from 'weather/components/main-content';
+import TemperatureService, {
+  TemperatureFormat,
+} from 'weather/services/temperature';
 import { fahrenheitToCelsius } from 'weather/system/util';
 
 interface DailyForecastComponentArgs {
@@ -11,6 +13,7 @@ interface DailyForecastComponentArgs {
 
 export default class DailyForecast extends Component<DailyForecastComponentArgs> {
   @service declare date: DateService;
+  @service declare temperature: TemperatureService;
 
   get iconUrl(): string {
     const icon = this.args.dailyForecast.weather[0].icon;
@@ -33,7 +36,7 @@ export default class DailyForecast extends Component<DailyForecastComponentArgs>
   get maxTemp(): number {
     let temp = this.args.dailyForecast.temp.max;
 
-    if (this.args.temperatureFormat === TemperatureFormat.FAHRENHEIT) {
+    if (this.temperature.format === TemperatureFormat.FAHRENHEIT) {
       return Math.round(temp);
     } else {
       return Math.round(fahrenheitToCelsius(temp));

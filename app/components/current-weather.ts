@@ -1,6 +1,9 @@
 import Component from '@glimmer/component';
-import { TemperatureFormat } from 'weather/components/main-content';
+import TemperatureFormatService, {
+  TemperatureFormat,
+} from 'weather/services/temperature';
 import { fahrenheitToCelsius } from 'weather/system/util';
+import { inject as service } from '@ember/service';
 
 interface CurrentWeatherArgs {
   currentWeather: any;
@@ -8,6 +11,8 @@ interface CurrentWeatherArgs {
 }
 
 export default class CurrentWeather extends Component<CurrentWeatherArgs> {
+  @service declare temperature: TemperatureFormatService;
+
   /**
    * Returns the current weather description.
    */
@@ -20,8 +25,7 @@ export default class CurrentWeather extends Component<CurrentWeatherArgs> {
    */
   get currentTemp(): number {
     let temp = this.args.currentWeather.temp;
-
-    if (this.args.temperatureFormat === TemperatureFormat.FAHRENHEIT) {
+    if (this.temperature.format === TemperatureFormat.FAHRENHEIT) {
       return Math.round(temp);
     } else {
       return Math.round(fahrenheitToCelsius(temp));

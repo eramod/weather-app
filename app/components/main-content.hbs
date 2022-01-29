@@ -1,6 +1,27 @@
-<CurrentWeather @date={{this.date}} @currentWeather={{@weatherData.current}} />
+<button
+  class="celsius-button"
+  type="button"
+  {{on 'click' (fn this.setTempFormat 'celsius')}}
+>
+  Celsius
+</button>
+<button
+  class="fahrenheit-button"
+  type="button"
+  {{on 'click' (fn this.setTempFormat 'fahrenheit')}}
+>
+  Fahrenheit
+</button>
+<CurrentWeather
+  @date={{this.date}}
+  @currentWeather={{@weatherData.current}}
+  @temperatureFormat={{this.temperatureFormat}}
+/>
 <div class="daily-forecast-wrapper">
   {{#each this.sevenDayForecast as |dailyForecast|}}
-    <DailyForecast @dailyForecast={{dailyForecast}} />
+    <DailyForecast
+      @dailyForecast={{dailyForecast}}
+      @temperatureFormat={{this.temperatureFormat}}
+    />
   {{/each}}
 </div>

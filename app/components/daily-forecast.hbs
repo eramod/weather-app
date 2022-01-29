@@ -2,9 +2,9 @@
   {{this.day}}
   {{this.dateOfMonth}}
   <div>
-    {{round @dailyForecast.temp.max}}
+    {{round this.maxTemp}}
     /
-    {{round @dailyForecast.temp.min}}
+    {{round this.minTemp}}
   </div>
   <img src={{this.iconUrl}} width="50px" height="50px" alt="Weather icon" />
 </div>

@@ -1,7 +1,10 @@
 import Component from '@glimmer/component';
+import { TemperatureFormat } from 'weather/components/main-content';
+import { fahrenheitToCelsius } from 'weather/system/util';
 
 interface CurrentWeatherArgs {
   currentWeather: any;
+  temperatureFormat: TemperatureFormat;
 }
 
 export default class CurrentWeather extends Component<CurrentWeatherArgs> {
@@ -16,7 +19,13 @@ export default class CurrentWeather extends Component<CurrentWeatherArgs> {
    * Returns the current temperature in fahrenheit.
    */
   get currentTemp(): number {
-    return Math.round(this.args.currentWeather.temp);
+    let temp = this.args.currentWeather.temp;
+
+    if (this.args.temperatureFormat === TemperatureFormat.FAHRENHEIT) {
+      return Math.round(temp);
+    } else {
+      return Math.round(fahrenheitToCelsius(temp));
+    }
   }
 
   get currentWeatherIconUrl(): string {

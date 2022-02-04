@@ -1,5 +1,5 @@
-import Application from 'weather-three/app';
-import config from 'weather-three/config/environment';
+import Application from 'weather/app';
+import config from 'weather/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';

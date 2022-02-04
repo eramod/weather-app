@@ -1,5 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-import config from 'weather-three/config/environment';
+import config from 'weather/config/environment';
 
 export default class Router extends EmberRouter {
   location = config.locationType;

@@ -1,8 +1,8 @@
 {
-  "name": "weather-three",
+  "name": "weather",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for weather-three goes here",
+  "description": "Small description for weather goes here",
   "repository": "",
   "license": "MIT",
   "author": "",

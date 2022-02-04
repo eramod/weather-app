@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   let ENV = {
-    modulePrefix: 'weather-three',
+    modulePrefix: 'weather',
     environment,
     rootURL: '/',
     locationType: 'history',

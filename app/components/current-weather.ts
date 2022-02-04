@@ -1,12 +1,14 @@
 import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
 import TemperatureFormatService, {
   TemperatureFormat,
 } from 'weather/services/temperature';
 import { fahrenheitToCelsius } from 'weather/system/util';
-import { inject as service } from '@ember/service';
+import { CurrentWeatherData } from 'weather-data';
+import { assert } from '@ember/debug';
 
 interface CurrentWeatherArgs {
-  currentWeather: any;
+  currentWeather: CurrentWeatherData;
   temperatureFormat: TemperatureFormat;
 }
 
@@ -16,8 +18,11 @@ export default class CurrentWeather extends Component<CurrentWeatherArgs> {
   /**
    * Returns the current weather description.
    */
-  get currentWeatherDescription(): string {
-    return this.args.currentWeather.weather[0].main;
+  get currentWeatherDescription(): CurrentWeatherData['weather'][0]['main'] {
+    let weather = this.args.currentWeather.weather[0];
+    assert('Weather object must exist', weather !== undefined);
+
+    return weather.main;
   }
 
   /**
@@ -32,8 +37,10 @@ export default class CurrentWeather extends Component<CurrentWeatherArgs> {
     }
   }
 
-  get currentWeatherIconUrl(): string {
-    const icon = this.args.currentWeather.weather[0].icon;
-    return `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  get currentWeatherIconUrl(): CurrentWeatherData['weather'][0]['icon'] {
+    const weather = this.args.currentWeather.weather[0];
+    assert('Weather object must exist', weather !== undefined);
+
+    return `http://openweathermap.org/img/wn/${weather.icon}@2x.png`;
   }
 }

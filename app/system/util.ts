@@ -9,6 +9,7 @@ export function celsiusToFahrenheit(celsius: number): number {
 
 /**
  * Converts a given temperature from Fahrenheit to Celsius
+ *
  * @returns the temperature in Celsius
  */
 export function fahrenheitToCelsius(fahrenheit: number): number {

@@ -1,13 +1,15 @@
 import Component from '@glimmer/component';
+import { assert } from '@ember/debug';
 import { inject as service } from '@ember/service';
 import DateService from 'weather/services/date';
 import TemperatureService, {
   TemperatureFormat,
 } from 'weather/services/temperature';
 import { fahrenheitToCelsius } from 'weather/system/util';
+import { DailyForecastData } from 'weather-data';
 
 interface DailyForecastComponentArgs {
-  dailyForecast: any; // FIXME: Add type
+  dailyForecast: DailyForecastData;
   temperatureFormat: TemperatureFormat;
 }
 
@@ -15,13 +17,15 @@ export default class DailyForecast extends Component<DailyForecastComponentArgs>
   @service declare date: DateService;
   @service declare temperature: TemperatureService;
 
-  get iconUrl(): string {
-    const icon = this.args.dailyForecast.weather[0].icon;
-    return `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  get iconUrl(): DailyForecastData['weather'][0]['icon'] {
+    let weather = this.args.dailyForecast.weather[0];
+    assert('Weather object must exist', weather !== undefined);
+
+    return `http://openweathermap.org/img/wn/${weather.icon}@2x.png`;
   }
 
   get timestamp(): string {
-    return this.args.dailyForecast.dt;
+    return String(this.args.dailyForecast.dt);
   }
 
   get day(): string {

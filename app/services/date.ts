@@ -41,7 +41,11 @@ export default class DateService extends Service {
 
   getDay(timestamp: string): string {
     let date = new Date(parseInt(timestamp) * 1000);
-    return DAYS[date.getDay()];
+    let day = DAYS[date.getDay()];
+
+    assert('Day must be a number between 0 and 6', day !== undefined);
+
+    return day;
   }
 
   /** Date of the month (1-31) */

@@ -14,6 +14,20 @@
 >
   Fahrenheit
 </button>
+<form
+  role="search"
+  aria-label="Location search form"
+  {{on 'submit' this.onSubmit}}
+>
+  <input
+    type="search"
+    name="query"
+    value={{this.query}}
+    placeholder="Search Locations"
+    aria-label="Search"
+    autocomplete="off"
+  />
+</form>
 <CurrentWeather @date={{this.date}} @currentWeather={{@weatherData.current}} />
 <div class="daily-forecast-wrapper">
   {{#each this.sevenDayForecast as |dailyForecast|}}

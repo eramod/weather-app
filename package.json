@@ -97,5 +97,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "ember-cli-github-pages": "^0.2.2"
   }
 }
